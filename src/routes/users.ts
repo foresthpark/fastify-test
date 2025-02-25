@@ -31,7 +31,7 @@ export default async function (fastify: FastifyInstance) {
         },
       },
     },
-    async (request: FastifyRequest, reply: FastifyReply) => {
+    async (_request: FastifyRequest, _reply: FastifyReply) => {
       return fastify.db.users;
     }
   );
