@@ -74,6 +74,10 @@ export default async function (fastify: FastifyInstance) {
         reply
           .header("Content-Type", "audio/mpeg")
           .send(Buffer.from(audioBuffer));
+
+        return {
+          success: true,
+        };
       } catch (error) {
         fastify.log.error("Error in speech route:", error);
         reply.code(500);
