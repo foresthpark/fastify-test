@@ -16,9 +16,16 @@ const server: FastifyInstance<Server, IncomingMessage, ServerResponse> =
     logger: true,
   });
 
-// Register CORS
+// Enhanced CORS configuration
 server.register(cors, {
-  origin: true, // Allow all origins
+  origin: "*", // Allow all origins
+  methods: ["GET", "PUT", "POST", "DELETE", "OPTIONS"],
+  allowedHeaders: ["Content-Type", "Authorization", "Accept"],
+  exposedHeaders: ["Content-Disposition"], // Useful for file downloads
+  credentials: true,
+  maxAge: 86400, // 24 hours
+  preflightContinue: false,
+  preflight: true,
 });
 
 // Register Swagger for OpenAPI schema generation
