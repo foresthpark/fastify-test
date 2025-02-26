@@ -18,7 +18,7 @@ const server: FastifyInstance<Server, IncomingMessage, ServerResponse> =
 
 // Enhanced CORS configuration
 server.register(cors, {
-  origin: ["http://localhost:3000", "http://localhost:8000", "*"], // Specific origins
+  origin: true, // Specific origins
   methods: ["GET", "PUT", "POST", "DELETE", "OPTIONS"],
   allowedHeaders: ["Content-Type", "Authorization", "Accept"],
   exposedHeaders: ["Content-Disposition"], // Useful for file downloads
