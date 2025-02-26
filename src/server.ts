@@ -8,6 +8,7 @@ import { Server, IncomingMessage, ServerResponse } from "http";
 // Import routes
 import rootRoutes from "./routes/root";
 import userRoutes from "./routes/users";
+import openaiRoutes from "./routes/openai";
 import dbPlugin from "./plugins/db";
 
 const server: FastifyInstance<Server, IncomingMessage, ServerResponse> =
@@ -31,7 +32,7 @@ server.register(swagger, {
     host: "localhost:3000",
     schemes: ["http"],
     consumes: ["application/json"],
-    produces: ["application/json"],
+    produces: ["application/json", "audio/mpeg"],
   },
 });
 
@@ -50,6 +51,7 @@ server.register(dbPlugin);
 // Register routes
 server.register(rootRoutes);
 server.register(userRoutes, { prefix: "/users" });
+server.register(openaiRoutes, { prefix: "/openai" });
 
 // Run the server!
 const start = async (): Promise<void> => {
