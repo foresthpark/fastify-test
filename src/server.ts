@@ -24,7 +24,17 @@ server.register(cors, {
     "http://localhost:8080",
   ], // Specific origins
   methods: ["GET", "PUT", "POST", "DELETE", "OPTIONS"],
-  allowedHeaders: ["Content-Type", "Authorization", "Accept"],
+  allowedHeaders: [
+    "Origin",
+    "X-Requested-With",
+    "Accept",
+    "Content-Type",
+    "Authorization",
+    "Access-Control-Allow-Origin",
+    "Access-Control-Allow-Headers",
+    "Access-Control-Allow-Methods",
+    "Access-Control-Allow-Credentials",
+  ],
   exposedHeaders: ["Content-Disposition"], // Useful for file downloads
   credentials: true,
   maxAge: 86400, // 24 hours
